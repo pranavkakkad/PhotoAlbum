@@ -1,23 +1,20 @@
-import React,{Component} from 'react';
-import ReactDOM from 'react-dom'
-import Main from './Components/Main'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './Components/App'
+import { BrowserRouter } from 'react-router-dom'
 import './styles/stylesheet.css'
-import {BrowserRouter} from 'react-router-dom'
+import {Provider} from 'react-redux'
+import { createStore } from 'redux';
+import rootReducer from './redux/reducer';
+
+const store = createStore(rootReducer)
 
 
 
 
-
-// const element = React.createElement("ol", null,tasks.map((task,index)=>
-//     React.createElement('li',{key:index},task)));
-
-
-//JSX
-
-
-
-
-
-
-
-ReactDOM.render(<BrowserRouter><Main/></BrowserRouter>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}>
+    <BrowserRouter>
+    <App/>
+    </BrowserRouter>
+    </Provider>,
+     document.getElementById('root'));
